@@ -21,7 +21,7 @@
 		where v.video_id in (
 			SELECT c.video_id from tb_collection c
 			where c.user_id = #{userId}
-		) and v.video_state_id = 4 
+		) and v.video_state_id = 2
 		GROUP BY v.edit_date
 		order by v.edit_date DESC;
  	</select>

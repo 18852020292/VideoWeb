@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="/icons/icon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/xcConfirm.css"/>
+
+		<!-- <link rel="stylesheet" href="/css/index.css" type="text/css" /> -->
+	
+		<!-- icon图标 -->
+		<link rel="stylesheet" href="/css/font-awesome.min.css" />
+		<!-- 导航条 -->
+		<link rel="stylesheet" href="/css/menu.css" />
+		<link href="/css/style2.css" rel="stylesheet" type="text/css" media="all" />
+
+	</head>
+	<body>
+		
+		
+		<div class="container" style="padding: 0; background-color: EBEBEB;">
+			
+			<div class="container-fluid main-content" style="margin-bottom: 4px;padding: 0;">
+				<div class="header">
+					<div class="logo">
+						<img th:src="${session.user.iconUrl}" style="float: left; padding:0;margin-right:15px; width: 45px; height: 45px; border-radius: 50%;" /> <a href="#" style="float: left;">
+							<h1>个人中心</h1>
+						</a>
+					</div>
+					<div class="search">
+						<div class="search2">
+							<form>
+								<i class="fa fa-search"></i> <input type="text" value="Search for a movie" onFocus="this.value = '';"
+									onBlur="if (this.value == '') {this.value = 'Search for a movie, play, event, sport or more';}" />
+							</form>
+						</div>
+					</div>
+				<div class="clearfix"></div>
+			</div>
+			
+			<!--
+        	作者：2539829814@qq.com
+        	时间：2019-12-30
+        	描述：网站导航条
+       -->
+       <div class="bootstrap_container">
+					<nav class="navbar navbar-default w3_megamenu" role="navigation">
+						<div class="navbar-header">
+							<button type="button" data-toggle="collapse" data-target="#defaultmenu" class="navbar-toggle">
+								<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+							</button>
+							<a href="#" class="navbar-brand"><i class="fa fa-home"></i></a>
+
+						</div>
+						<!-- end navbar-header -->
+
+						<div id="defaultmenu" class="navbar-collapse collapse">
+							<ul class="nav navbar-nav">
+							<li data-toggle="tab" class="active">
+								<a id="userInfoButton" href="#">个人信息</a>
+							</li>
+							<li data-toggle="tab">
+								<a id="accountInfoButton" href="#">账户信息</a>
+							</li>
+							<li data-toggle="tab">
+								<a id="userInfoUpdateButton" href="#">修改信息</a>
+							</li>
+												
+							<li class="dropdown" data-toggle="tab">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">密码管理 <span class="caret"></span></a>
+								<ul class="dropdown-menu mytab">
+									<li data-toggle="tab" class="dropdown-header">密码中心</li>
+									<li data-toggle="tab">
+										<a id="passwordUpdateButton" href="#">修改密码</a>
+									</li>
+									<li data-toggle="tab">
+										<a id="forgetPasswordButton" href="#">找回密码</a>
+									</li>
+								</ul>
+							</li>
+							
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown" data-toggle="tab">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span title="设置" class="glyphicon glyphicon-cog"></span></a>
+								<ul class="dropdown-menu mytab">
+									<li data-toggle="tab" class="dropdown-header">设置中心</li>
+									<li data-toggle="tab">
+										<a id="reload" href="#">页面刷新</a>
+									</li>
+									<li data-toggle="tab">
+										<a href="#">安全退出</a>
+									</li>
+									<li data-toggle="tab">
+										<a href="#">账号注销</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				<!--/.container-fluid -->
+			</nav>
+		</div>
+			
+			<!--
+            	作者：2539829814@qq.com
+            	时间：2020-02-05
+            	描述：用户信息页
+            -->
+			<form id="userInfo" class="form-horizontal" role="form" style="border:1px solid rgba(0,0,0,.125);margin:0;">
+				<div class="form-group">
+					<label class="col-sm-1 control-label">用户名称</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${session.user.userName}"></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label">用户年龄</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${session.user.userAge}"></p>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-1 control-label">用户性别</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${session.user.userSex}"></p>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-1 control-label">QQ邮箱</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${session.user.userMail}"></p>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-1 control-label">手机号码</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${session.user.userPhone}"></p>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-1 control-label">家庭住址</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${session.user.userAddress}"></p>
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<label for="lastname" class="col-sm-1 control-label">头像</label>
+					<div class="col-sm-11">
+						<p class="form-control-static">
+							<img th:src="${session.user.iconUrl}" style="width:200px;height:200px;"/>
+						</p>
+					</div>
+				</div>
+				 
+			</form>
+			
+			<!--
+            	作者：2539829814@qq.com
+            	时间：2020-02-05
+            	描述：账户信息页
+            -->
+			<form id="accountInfo" class="form-horizontal" role="form" style="border:1px solid rgba(0,0,0,.125);margin:0;">
+				<div class="form-group">
+					<label class="col-sm-1 control-label">账户ID</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${session.user.userId}"></p>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-1 control-label">注册时间</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${#dates.format(session.user.registerDate,'yyyy:MM:dd hh:mm:ss')}"></p>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-1 control-label">账户角色</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${session.user.userRole.userRole}"></p>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-1 control-label">账户状态</label>
+					<div class="col-sm-11">
+						<p class="form-control-static" th:text="${session.user.state.stateName}"></p>
+					</div>
+				</div>
+				 
+			</form>
+			
+			
+			
+			<!--
+            	作者：2539829814@qq.com
+            	时间：2020-02-05
+            	描述：修改信息
+            -->
+			
+			<form id="userInfoUpdate" method="post" action="/UserController/userInfoUpdate" class="form-horizontal" role="form" enctype="multipart/form-data" style="border:1px solid rgba(0,0,0,.125);margin:0;">
+				<div class="form-group">
+					<label for="firstname" class="col-sm-1 control-label">用户名称</label>
+					<div class="col-sm-11">
+						<input type="text" name="userName" autocomplete="off" th:value="${session.user.userName}" class="form-control" disabled="disabled" placeholder="用户名称">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-1 control-label">用户年龄</label>
+					<div class="col-sm-11">
+						<select class="form-control" name="userAge">
+							<option th:text="${session.user.userAge}"></option>
+							
+							<span th:each="dayCyc : ${#numbers.sequence(0,100)}" >
+								
+								<span th:if="${session.user.userAge} == ''">
+									<option selected="selected">请输入用户年龄</option>
+								</span>
+							
+							
+								<span th:if="${session.user.userAge} == ${dayCyc }">
+									<option selected="selected" th:text="${dayCyc }"></option>
+								</span>
+								
+								<span th:if="${session.user.userAge} != ${dayCyc }">
+									<option th:text="${dayCyc }"></option>
+								</span>
+							</span>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="lastname" class="col-sm-1 control-label">用户性别</label>
+					<div class="col-sm-11">
+						<select class="form-control" name="userSex">
+						
+							<span th:if="${session.user.userSex}!=''">
+								<option th:text="${session.user.userSex}"></option>
+								<span th:if="${session.user.userSex}=='男'">
+									<option>女</option>
+								</span>
+								<span th:if="${session.user.userSex}=='女'">
+									<option>男</option>
+								</span>
+							</span>
+							
+							<span th:if="${session.user.userSex}==''">
+								<option>女</option>
+								<option>男</option>
+							</span>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="lastname" class="col-sm-1 control-label">QQ邮箱</label>
+					<div class="col-sm-11">
+						<input type="email" autocomplete="off" name="userMail" th:value="${session.user.userMail}" class="form-control" placeholder="请输入QQ邮箱">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="lastname" class="col-sm-1 control-label">手机号码</label>
+					<div class="col-sm-11">
+						<input type="text" autocomplete="off" name="userPhone" th:value="${session.user.userPhone}" class="form-control" placeholder="请输入手机号码">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="lastname" class="col-sm-1 control-label">家庭住址</label>
+					<div class="col-sm-11">
+						<input type="text" autocomplete="off" name="userAddress" th:value="${session.user.userAddress}" class="form-control" placeholder="请输入家庭住址">
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<label for="lastname" class="col-sm-1 control-label">头像URL</label>
+					<div class="col-sm-11">
+						<input id="file-selector" type="file" accept="image/gif,image/jpeg,image/x-png" style="display:none;" name="iconFile"  class="form-control" placeholder="请选择文件">
+						<img id="imgshow" src="/img/add.png"  style="width:200px;height:200px;"/>
+					</div>
+				</div>
+				 
+				 
+				<div class="form-group">
+					<div class="col-sm-offset-1 col-sm-10">
+						<div class="checkbox">
+							<label>
+							<input type="checkbox"> 本人确认已仔细阅读并充分理解<a href="https://www.vcg.com/help/privacy-policy"> 个人信息保护政策</a>与<a href="https://www.vcg.com/help/website-terms"> 网站使用条框</a> 的全部内容，同意接受上述协议的全部内容
+						</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-offset-1 col-lg-1">
+						<button type="submit" class="btn btn-default">上传</button>
+					</div>
+					<div class="col-lg-1">
+						<button type="reset" class="btn btn-default">取消</button>
+					</div>
+				</div>
+			</form>
+			
+			<!--
+            	作者：2539829814@qq.com
+            	时间：2020-02-05
+            	描述：修改密码页
+            -->
+			<form id="passwordUpdate" action="#" method="post" class="form-horizontal" role="form" style="border:1px solid rgba(0,0,0,.125);margin:0;">
+				<div class="form-group">
+					<label for="firstname" class="col-sm-1 control-label">旧密码</label>
+					<div class="col-sm-11">
+						<input type="password" name="oldpswd" class="form-control" placeholder="输入旧密码">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-1 control-label">新密码</label>
+					<div class="col-sm-11">
+						<input type="password" name="newpswd" class="form-control" placeholder="输入新密码">
+					</div>
+				</div>
+ 		 
+				<div class="form-group">
+					<div class="col-sm-offset-1 col-sm-10">
+						<div class="checkbox">
+							<label>
+							<input type="checkbox"> 本人确认已仔细阅读并充分理解<a href="https://www.vcg.com/help/privacy-policy"> 个人信息保护政策</a>与<a href="https://www.vcg.com/help/website-terms"> 网站使用条框</a> 的全部内容，同意接受上述协议的全部内容
+						</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-offset-1 col-lg-1">
+						<button type="button" id="pswdupload" class="btn btn-default">更改密码</button>
+					</div>
+					<div class="col-lg-1">
+						<button type="reset" class="btn btn-default">取消</button>
+					</div>
+				</div>
+			</form>
+			
+			<div class="container" id="forgetPassword"><h1>密码将会发送到你的QQ邮箱，请注意查收。</h1></div>
+			
+			
+			</div>
+			
+		</div>
+		
+		
+		<script src="/js/jquery.min.js"></script>
+		<!-- include flowplayer -->
+		<script src="/js/flowplayer.min.js"></script>
+
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/home.js"></script>
+		<script language="JavaScript">
+		
+			$('#reload').click(
+				function(){
+					window.location.reload();
+				}		
+			);
+			
+			$(document).ready(
+				function(){
+					$("#userInfo").show();
+					$("#accountInfo").hide();
+					$("#userInfoUpdate").hide();
+					$("#passwordUpdate").hide();
+					$("#forgetPassword").hide();
+				}
+			);
+			
+			$("#userInfoButton").click(
+				function(){
+					$("#userInfo").show();
+					$("#accountInfo").hide();
+					$("#userInfoUpdate").hide();
+					$("#passwordUpdate").hide();
+					$("#forgetPassword").hide();
+				}
+			);
+			
+			$("#accountInfoButton").click(
+				function(){
+					$("#accountInfo").show();
+					$("#userInfo").hide();
+					$("#userInfoUpdate").hide();
+					$("#passwordUpdate").hide();
+					$("#forgetPassword").hide();
+				}
+			);
+			
+			$("#userInfoUpdateButton").click(
+				function(){
+					$("#userInfoUpdate").show();
+					$("#userInfo").hide();
+					$("#accountInfo").hide();
+					$("#passwordUpdate").hide();
+					$("#forgetPassword").hide();
+				}
+			);
+			$("#passwordUpdateButton").click(
+				function(){
+					$("#passwordUpdate").show();
+					$("#userInfo").hide();
+					$("#accountInfo").hide();
+					$("#userInfoUpdate").hide();
+					$("#forgetPassword").hide();
+				}
+			);
+			
+			
+		    
+		    $('#file-selector').change(function () {
+		        // 先获取用户上传的文件对象
+		        let fileObj = this.files[0];
+		        // 生成一个文件读取的内置对象
+		        let fileReader = new FileReader();
+		        // 将文件对象传递给内置对象
+		        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+		        // 将读取出文件对象替换到img标签
+		        fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+		          	$('#imgshow').attr('src',fileReader.result)
+		        }
+		    });
+			
+		    $("#imgshow").click(
+		    	function(){
+		    		$("#file-selector").trigger("click");
+		    	}
+		    );
+			
+			
+			$("#forgetPasswordButton").click(
+					function(){
+						$("#forgetPassword").show();
+						$("#passwordUpdate").hide();
+						$("#userInfo").hide();
+						$("#accountInfo").hide();
+						$("#userInfoUpdate").hide();
+						
+						
+						setTimeout(
+							function(){
+								$.ajax({
+									type:"post",
+									url:"/UserController/forget",
+									async:true,
+									dataType:"JSON",
+									error:function(data){
+										window.wxc.xcConfirm("密码发送失败", window.wxc.xcConfirm.typeEnum.error);
+									},
+								  	success:function(data){
+								  		window.wxc.xcConfirm("密码已发送到邮箱", window.wxc.xcConfirm.typeEnum.success);
+									}//success:function
+								});//ajax									
+							},
+							100
+						);
+						
+					}
+				);
+			
+			$("#pswdupload").click(			
+				function(){
+					$.ajax({
+						type:"post",
+						url:"/UserController/passwordUpdate",
+						async:true,
+						data: $('#passwordUpdate').serialize(),
+						dataType:"JSON",
+						contentType: "application/x-www-form-urlencoded; charset=utf-8",
+						error:function(data){
+				  			window.wxc.xcConfirm("密码修改失败", window.wxc.xcConfirm.typeEnum.error);
+						},
+					  	success:function(result){  			  		
+					  		if(result.message =='密码修改成功'){
+					  			window.wxc.xcConfirm(result.message, window.wxc.xcConfirm.typeEnum.success);
+					  		}	else{
+					  			window.wxc.xcConfirm(result.message, window.wxc.xcConfirm.typeEnum.error);
+					  		}
+						}//success:function
+					});//ajax
+				}		
+			);
+		</script>
+	</body>
+</html>

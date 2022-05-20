@@ -185,11 +185,9 @@
 										<a id="reload" href="#">页面刷新</a>
 									</li>
 									<li data-toggle="tab">
-										<a href="#">安全退出</a>
+										<a id="logout" href="#">安全退出</a>
 									</li>
-									<li data-toggle="tab">
-										<a href="#">账号注销</a>
-									</li>
+
 								</ul>
 							</li>
 						</ul>
@@ -299,7 +297,11 @@
 					window.location.reload();
 				}		
 			);
-			
+			$('#logout').click(
+					function(){
+						window.location.replace("http://localhost");
+					}
+			);
 			$("#videoupload").click(function(){
 				window.open("/RedirectController/videouploadredirect");
 			});

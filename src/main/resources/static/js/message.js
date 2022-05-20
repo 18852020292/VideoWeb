@@ -1,7 +1,11 @@
 $('#reload').click(function() {
 	window.location.reload();
 });
-
+$('#logout').click(
+	function(){
+		window.location.replace("http://localhost");
+	}
+);
 var allMsg_signal = false;
 var privateMsg_signal = false;
 var systemMsg_signal = false;

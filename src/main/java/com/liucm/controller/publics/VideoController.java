@@ -202,6 +202,7 @@ public class VideoController {
 	public MsgResponse verifyFalseVideoListByAjax(HttpServletRequest request) {
 		User user = request.getSession().getAttribute("user") != null ? (User) request.getSession().getAttribute("user")
 				: null;
+		System.out.println(456);
 		if (user != null) {
 			return MsgResponse.success("获取认证失败视频成功", videoService.getVerifyFalseVideoByUserId(user.getUserId()));
 		} else {
@@ -214,12 +215,17 @@ public class VideoController {
 	public MsgResponse focusedVideoListByAjax(HttpServletRequest request) {
 		User user = request.getSession().getAttribute("user") != null ? (User) request.getSession().getAttribute("user")
 				: null;
+		System.out.println(user.getUserName());
 		if (user != null) {
-			List<Integer> fdList = focusService.getUserFocusList(user.getUserId());		
+
+			List<Integer> fdList = focusService.getUserFocusList(user.getUserId());
+
+			System.out.println(fdList);
 			List<Video> videoList = new ArrayList<Video>();
 			for(Integer userId:fdList) {
 				videoList.addAll(videoService.getEnableVideoByUserId(userId));
 			}
+			System.out.println(videoList);
 			Collections.sort(videoList);
 			return MsgResponse.success("获取认证失败视频成功", videoList);
 		} else {

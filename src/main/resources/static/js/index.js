@@ -131,6 +131,11 @@ $('#reload').click(
 	}		
 );
 
+$('#logout').click(
+	function(){
+		window.location.replace("http://localhost");
+	}
+);
 
 
 $(document).ready(function(){

@@ -88,18 +88,19 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean forget(String userName) {
+
 		User user = null;
 		if (!userName.equals("")) {
-			System.out.println(1);
+
 			user = userMapper.selectOneByUserName(userName);
-			System.out.println(user.getUserName());
+
 		}
 		if (user != null) {
-			System.out.println(3);
+
 			return mailService.sendSimpleMail(user.getUserMail(), "找回密码",
 					"尊敬的" + user.getUserName() + "，你好！你的密码为" + user.getPassword() + "，请及时修改你的密码。");
 		} else {
-			System.out.println(2);
+
 			return false;
 		}
 	}

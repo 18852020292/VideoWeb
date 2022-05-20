@@ -75,6 +75,7 @@ public class UserController {
 	@PostMapping("/forget")
 	@ResponseBody
 	public boolean forget(HttpServletRequest request) {
+
 		String userName = request.getParameter("userName");
 		Object attribute = request.getSession().getAttribute("user");
 		if (attribute != null) {

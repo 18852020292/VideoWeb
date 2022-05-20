@@ -20,7 +20,7 @@
 		where v.video_id in (
 			SELECT r.video_id from tb_record r
 			where r.user_id = #{userId}
-		) and v.video_state_id = 2
+		) and v.video_state_id = 4
 		GROUP BY v.edit_date
 		order by v.edit_date DESC;
  	</select>

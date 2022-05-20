@@ -86,7 +86,7 @@
  	</select>
  	
  	<select id="selectVideoListByAjax" parameterType="int" resultMap="videoresultplus">
- 		select * from tb_video where video_state_id = 2 limit #{curIndex}, #{pageSize} ;
+ 		select * from tb_video where video_state_id = 5 limit #{curIndex}, #{pageSize} ;
  	</select>
  	
  	<select id="selectExistVideoListByAjax" parameterType="int" resultMap="videoresultplus">
@@ -94,11 +94,11 @@
  	</select>
  	
  	<select id="selectVideoByTypeAjax" parameterType="int" resultMap="videoresultplus">
- 		select * from tb_video where videotype_id = #{videoTypeId} and video_state_id=2 order by rand() limit #{pageSize} ;
+ 		select * from tb_video where videotype_id = #{videoTypeId} and video_state_id=4 order by rand() limit #{pageSize} ;
  	</select>
  	
  	<select id="selectVideoByPage"  resultMap="videoresultplus">
- 		select * from tb_video where video_state_id = #{stateId} limit #{page.curCol} , #{page.pageSize}; 
+ 		select * from tb_video where  = #{stateId} limit #{page.curCol} , #{page.pageSize};
  	</select>
  	
  	<select id="selectOneByVideoId" parameterType="int"  resultMap="videoresultplus">

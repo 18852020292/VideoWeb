@@ -161,7 +161,7 @@ public class VideoServiceImpl implements VideoService {
 	@Override
 	public List<Video> getEnableVideoByUserId(int userId) {
 		//return videoMapper.selectEnableVideoByUserId(userId);
-		return videoMapper.selectVideoByUserIdAndVideoStateId(userId, 2);
+		return videoMapper.selectVideoByUserIdAndVideoStateId(userId, 4);
 	}
 
 	@Override

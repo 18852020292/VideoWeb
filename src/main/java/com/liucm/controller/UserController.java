@@ -81,6 +81,9 @@ public class UserController {
 		if (attribute != null) {
 			userName = ((User) attribute).getUserName();
 		}
+//		if(((User) attribute).getUserMail() == null) {
+//			return false;
+//		}
 		return userService.forget(userName);
 	}
 

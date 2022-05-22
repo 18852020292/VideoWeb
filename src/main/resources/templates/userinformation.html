@@ -349,7 +349,7 @@
 				</div>
 			</form>
 			
-			<div class="container" id="forgetPassword"><h1>密码将会发送到你的QQ邮箱，请注意查收。</h1></div>
+			<div class="container"  ><p id="forgetPassword" th:text="${session.user.userMail}"></p></div>
 			
 			
 			</div>
@@ -462,12 +462,23 @@
 									type:"post",
 									url:"/UserController/forget",
 									async:true,
+									data:{
+										"userMail":$("#forgetPassword").text()
+									},
 									dataType:"JSON",
+
 									error:function(data){
+
 										window.wxc.xcConfirm("密码发送失败", window.wxc.xcConfirm.typeEnum.error);
 									},
 								  	success:function(data){
-								  		window.wxc.xcConfirm("密码已发送到邮箱", window.wxc.xcConfirm.typeEnum.success);
+
+										if (data) {
+											window.wxc.xcConfirm("密码已发送到邮箱", window.wxc.xcConfirm.typeEnum.success);
+										}
+										else {
+											window.wxc.xcConfirm("还没有绑定邮箱哦！先去绑定邮箱吧。", window.wxc.xcConfirm.typeEnum.error);
+										}
 									}//success:function
 								});//ajax									
 							},

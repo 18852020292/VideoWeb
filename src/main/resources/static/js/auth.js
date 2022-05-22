@@ -10,6 +10,7 @@ var Auth = {
 		login_link: document.querySelector('.login-link'),
 		login_btn: document.querySelector('.login-btn'),
 		register_link: document.querySelector('.register-link'),
+		lowin_group: document.querySelector('.lowin-group'),
 		password_group: document.querySelector('.password-group'),
 		password_group_height: 0,
 		lowin_register: document.querySelector('.lowin-register'),
@@ -120,7 +121,10 @@ var Auth = {
 		}
 
 		Auth.vars.forgot_link.addEventListener("click", (e) => {
-			Auth.forgot(e);
+
+			if (document.getElementById('userName').value.length != 0) {
+				Auth.forgot(e);
+			}
 		});
 
 		Auth.vars.register_link.addEventListener("click", (e) => {

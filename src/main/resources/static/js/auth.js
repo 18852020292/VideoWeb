@@ -62,9 +62,10 @@ var Auth = {
 		Auth.vars.login_btn.innerText = '找回密码';
 
 		Auth.setHeight(Auth.vars.lowin_wrapper_height - Auth.vars.password_group_height);
-		var value = document.getElementById("userName").value;
-		if(value != ""){
-			Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.forgot_url+value);		
+		var value1 = document.getElementById("userName").value;
+		// var value2 = document.getElementById("userMail").value;
+		if(value1 != ""){
+			Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.forgot_url+value1);
 		}else{
 			Auth.vars.lowin_login.querySelector('form').setAttribute('action', "#");		
 		}
@@ -123,6 +124,7 @@ var Auth = {
 		Auth.vars.forgot_link.addEventListener("click", (e) => {
 
 			if (document.getElementById('userName').value.length != 0) {
+				console.log(2);
 				Auth.forgot(e);
 			}
 		});

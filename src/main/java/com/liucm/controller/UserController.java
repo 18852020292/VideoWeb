@@ -4,6 +4,8 @@ import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.liucm.dao.UserMapper;
+import io.swagger.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +35,23 @@ public class UserController {
 	private UserService userService;
 
 	@Autowired
+	private UserMapper userMapper;
+	@Autowired
 	private FilePathConfig filePathConfig;
+
+	@PostMapping("/ajaxUserMail")
+	@ResponseBody
+	public boolean ajaxUserMail(HttpServletRequest request) {
+		String userName = request.getParameter("userName");
+		 System.out.println(userName);
+		 User user= userMapper.selectOneByUserName(userName);
+
+		if (user.getUserMail().equals("")) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 	@PostMapping("/login")
 	public String login(HttpServletRequest request) {

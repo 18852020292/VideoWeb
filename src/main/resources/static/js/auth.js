@@ -88,6 +88,7 @@ var Auth = {
 		}, 1000);
 
 		Auth.vars.login_btn.innerText = '登录';
+		console.log(Auth.vars.option.login_url);
 		Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.login_url);
 
 		Auth.setHeight(Auth.vars.lowin_wrapper_height);
@@ -124,7 +125,6 @@ var Auth = {
 		Auth.vars.forgot_link.addEventListener("click", (e) => {
 
 			if (document.getElementById('userName').value.length != 0) {
-				console.log(2);
 				Auth.forgot(e);
 			}
 		});

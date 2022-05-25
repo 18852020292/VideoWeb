@@ -41,18 +41,40 @@ public class UserController {
 
 	@PostMapping("/ajaxUserMail")
 	@ResponseBody
-	public boolean ajaxUserMail(HttpServletRequest request) {
+	public String ajaxUserMail(HttpServletRequest request) {
 		String userName = request.getParameter("userName");
-		 System.out.println(userName);
 		 User user= userMapper.selectOneByUserName(userName);
+		 if (user == null){
+			 return "not found user";
+		 }
+		 else if (user.getUserMail().equals("")) {
+			return "not found user mail";
+		 }
+		 else {
+			 return "success";
+		 }
 
-		if (user.getUserMail().equals("")) {
-			return false;
-		} else {
-			return true;
-		}
 	}
-
+	@PostMapping("/ajaxUser")
+	@ResponseBody
+	public String ajaxUser(HttpServletRequest request) {
+		String userName = request.getParameter("userName");
+		String userPassword = request.getParameter("userPassword");
+		System.out.println(userName);
+		System.out.println(userPassword);
+		User user= userMapper.selectOneByUserName(userName);
+		String data = "";
+		if (user == null){
+			data = "not found user";
+		}
+		else if (!userPassword.equals(user.getPassword())) {
+			data = "The account and password do not match";
+		} else {
+			data = "success";
+		}
+		System.out.println(data);
+		return data;
+	}
 	@PostMapping("/login")
 	public String login(HttpServletRequest request) {
 		String userName = request.getParameter("userName");

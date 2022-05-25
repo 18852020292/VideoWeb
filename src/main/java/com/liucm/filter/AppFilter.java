@@ -22,7 +22,9 @@ public class AppFilter implements Filter{
 	
 	//排除一些拦截的请求
 	private static final Set<String> ALLOWED_PATHS = Collections.unmodifiableSet(new HashSet<>(
-            Arrays.asList("/","/css/auth.css","/UserController/register", "/UserController/ajaxUserMail",
+            Arrays.asList("/","/css/auth.css","/UserController/register",
+					"/UserController/ajaxUserMail",
+					"/UserController/ajaxUser",
             		"/img/kodinger.jpg",
             		"/css/kefu.css",
             		"/js/auth.js",

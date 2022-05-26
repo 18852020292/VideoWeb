@@ -42,8 +42,9 @@ public interface VideoMapper {
 	
 	public List<Video> selectVideoByTypeAjax(@Param(value = "curIndex")int curIndex,@Param(value = "pageSize")int pageSize,@Param(value="videoTypeId")int videoTypeId);
 	
-	public List<Video> selectVideoByPage(@Param(value = "page")Page<Video> page,@Param(value = "stateId") int stateId);
-	
+	public List<Video> selectVideoByPage(@Param(value = "page")Page<Video> page);
+
+	public List<Video> selectVideoByPage2(@Param(value = "page")Page<Video> page,@Param(value = "stateId") int stateId);
 	public List<Video> selectVideoByUserId(int userId);
 	
 	public List<Video> selectVideoByUserIdAndVideoStateId(@Param(value = "userId")int userId,@Param(value = "videoStateId")int videoStateId);

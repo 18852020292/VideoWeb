@@ -60,8 +60,6 @@ public class UserController {
 	public String ajaxUser(HttpServletRequest request) {
 		String userName = request.getParameter("userName");
 		String userPassword = request.getParameter("userPassword");
-		System.out.println(userName);
-		System.out.println(userPassword);
 		User user= userMapper.selectOneByUserName(userName);
 		String data = "";
 		if (user == null){
@@ -72,8 +70,7 @@ public class UserController {
 		} else {
 			data = "success";
 		}
-		System.out.println(data);
-		return data;
+				return data;
 	}
 	@PostMapping("/login")
 	public String login(HttpServletRequest request) {
@@ -103,8 +100,9 @@ public class UserController {
 	@ResponseBody
 	public String register(HttpServletRequest request) {
 		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
+		String password = request.getParameter("userPassword");
 		boolean signal = userService.addUser(userName, password);
+		System.out.println(123);
 		if(signal == false)
 			return "The userName was exist!";
 		else {

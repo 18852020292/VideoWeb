@@ -44,9 +44,19 @@ public class AdminVideoController {
 	public Page<Video> getVideoByAjax(@RequestParam int curPage) {
 		Page<Video> page = new Page<>(curPage,pageSize.getPageSize());
 		page.setMessage(videoService.getVideoByPage(page));
+
 		return page;
 	}
-	
+
+	@GetMapping("/getVideoByAjax2")
+	@ResponseBody
+	public Page<Video> getVideoByAjax2(@RequestParam int curPage) {
+		Page<Video> page = new Page<>(curPage,pageSize.getPageSize());
+		page.setMessage(videoService.getVideoByPage2(page));
+
+		return page;
+	}
+
 	@PostMapping("/verifyVideoByAjax")
 	@ResponseBody
 	public MsgResponse verifyVideoByAjax(@RequestParam int videoId,@RequestParam int stateId,@RequestParam String verifyText) {

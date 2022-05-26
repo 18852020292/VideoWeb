@@ -98,9 +98,13 @@
  	</select>
  	
  	<select id="selectVideoByPage"  resultMap="videoresultplus">
- 		select * from tb_video where  = #{stateId} limit #{page.curCol} , #{page.pageSize};
+ 		select * from tb_video  limit #{page.curCol} , #{page.pageSize};
  	</select>
- 	
+
+	<select id="selectVideoByPage2"  resultMap="videoresultplus">
+		select * from tb_video where video_state_id = #{stateId} limit #{page.curCol} , #{page.pageSize};
+	</select>
+
  	<select id="selectOneByVideoId" parameterType="int"  resultMap="videoresultplus">
  		select * from tb_video where video_id = #{videoId};
  	</select>

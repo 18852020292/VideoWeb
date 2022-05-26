@@ -44,7 +44,7 @@
 
 			<div class="lowin-box lowin-register">
 				<div class="lowin-box-inner">
-					<div action="/UserController/register" method="post">
+					<form name = "registerForm"  method="post">
 						<p>开始创建账号</p>
 						<div class="lowin-group">
 							<label>用户名</label>
@@ -54,13 +54,15 @@
 							<label>密码</label>
 							<input type="password" name="password" class="lowin-input">
 						</div>
-						<input class="lowin-btn" type="submit"/>
+						<button id = "register"  type="button" class="lowin-btn" >
+							注册
+						</button>
 							
 
 						<div class="text-foot">
 							已经存在账号? <a href="" class="login-link">登录</a>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -73,6 +75,34 @@
 	<script src="/js/auth.js"></script>
 	<script src="/js/jquery.min.js"></script>
 	<script>
+		$(function(){
+			$("#register").on('click',function (event) {
+			let registerForm = document.forms["registerForm"];
+				var userName = registerForm.userName.value;
+				var userPassword = registerForm.password.value;
+				var userData = {
+					userName: userName,
+					userPassword: userPassword
+							};
+				$.ajax({
+					url:'/UserController/register',
+					type:"POST",
+					data:userData,
+					timeout:1000,
+					success:function(data){
+						if (data === "The userName was exist!"){
+							alert("用户名已存在！");
+						}else {
+							alert("注册成功！");
+							window.location.href = "http://localhost";
+						}
+					},
+					error:function (data){
+						console.log("error")
+					}
+				});
+			})
+		})
 		$(document).ready(function(){
 
 			$("#forget").click(
@@ -108,6 +138,32 @@
 
 					}
 			);
+			// $("#register").click(
+			// 		function(){
+			//
+			// 			let registerForm = document.forms["registerForm"];
+			// 			var userName = registerForm.userName;
+			// 			var userPassword = registerForm.password;
+			// 			var userData = {
+			// 				userName: userName,
+			// 				userPassword: userPassword
+			// 			};
+			// 			$.ajax({
+			// 				url:'/UserController/register',
+			// 				type:"POST",
+			// 				data:userData,
+			//
+			// 				success:function(data){
+			// 					console.log(data);
+			// 					alert("未查询到此用户！");
+			// 				},
+			// 				error:function (data){
+			// 					console.log("error")
+			// 				}
+			// 			});
+			//
+			// 		}
+			// );
 			$("#login").click(
 					function(){
 						var userName = $("#userName").val();
@@ -118,32 +174,31 @@
 							userPassword: userPassword
 						};
 						var status;
-						$.ajax({
-							url:'/UserController/ajaxUser',
-							type:"POST",
-							data:userData,
-							dataType: "text",
-							success:function(data){
-								status = data;
+						if (loginForm.action.toString() ==="http://localhost/UserController/login") {
+							$.ajax({
+								url: '/UserController/ajaxUser',
+								type: "POST",
+								data: userData,
+								dataType: "text",
+								success: function (data) {
+									status = data;
+									let loginForm = document.forms["loginForm"];
+									console.log(loginForm.action.toString());
 
-								let loginForm = document.forms["loginForm"];
-								console.log(loginForm.action.toString());
-								if (loginForm.action.toString() ==="http://localhost/UserController/login"){
-								if (status === "not found user"){
-									alert("未查询到此用户！");
+									if (status === "not found user") {
+										alert("未查询到此用户！");
+									}
+									if (status === "The account and password do not match") {
+										alert("密码错误！");
+									} else {
+										$("#loginForm").submit();
+									}
+								},
+								error: function (data) {
+									console.log("error");
 								}
-								if (status === "The account and password do not match"){
-									alert("密码错误！");
-								}else {
-									$("#loginForm").submit();
-								}
-
-								}
-							},
-							error:function(data){
-								console.log("error");
-							}
-						});
+							});
+						}
 
 					}
 			);

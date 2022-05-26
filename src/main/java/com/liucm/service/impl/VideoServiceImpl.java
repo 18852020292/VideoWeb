@@ -270,7 +270,7 @@ public class VideoServiceImpl implements VideoService {
 	@Override
 	public String getVideoByPage(Page<Video> page) {
 		page.setTotalSize(videoMapper.selectVerifyVideoCount());
-		List<Video> data = videoMapper.selectVideoByPage(page,1);
+		List<Video> data = videoMapper.selectVideoByPage(page);
 		if(data != null) {
 			page.setData(data);
 			return "查询成功";
@@ -278,7 +278,17 @@ public class VideoServiceImpl implements VideoService {
 			return "查询失败";
 		}
 	}
-
+	@Override
+	public String getVideoByPage2(Page<Video> page) {
+		page.setTotalSize(videoMapper.selectVerifyVideoCount());
+		List<Video> data = videoMapper.selectVideoByPage2(page,1);
+		if(data != null) {
+			page.setData(data);
+			return "查询成功";
+		}else {
+			return "查询失败";
+		}
+	}
 	@Override
 	public boolean verifyVideo(int videoId , int stateId) {
 		

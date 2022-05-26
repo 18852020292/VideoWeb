@@ -17,7 +17,7 @@ public interface VideoService {
 	public List<Video> getVideoListByAjax(int curPage, int pageSize,int videoTypeId);
 	
 	public String getVideoByPage(Page<Video> page);
-
+	public String getVideoByPage2(Page<Video> page);
 	public List<Video> getVideoRecommend(int pageSize);
 
 	public Video getVideoByVideoId(int videoId);

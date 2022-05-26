@@ -14,7 +14,6 @@ var Auth = {
 		password_group: document.querySelector('.password-group'),
 		password_group_height: 0,
 		lowin_register: document.querySelector('.lowin-register'),
-		lowin_footer: document.querySelector('.lowin-footer'),
 		box: document.getElementsByClassName('lowin-box'),
 		option: {}
 	},
@@ -26,7 +25,7 @@ var Auth = {
 		Auth.vars.lowin_register.style.display = 'block';
 		Auth.vars.lowin_register.className += ' lowin-animated-flip';
 
-		Auth.setHeight(Auth.vars.lowin_register.offsetHeight + Auth.vars.lowin_footer.offsetHeight);
+		Auth.setHeight(Auth.vars.lowin_register.offsetHeight);
 
 		e.preventDefault();
 	},
@@ -45,7 +44,7 @@ var Auth = {
 			Auth.vars.lowin_login.classList.remove('lowin-animatedback');
 		},1000);
 
-		Auth.setHeight(Auth.vars.lowin_login.offsetHeight + Auth.vars.lowin_footer.offsetHeight);
+		Auth.setHeight(Auth.vars.lowin_login.offsetHeight);
 
 		e.preventDefault();
 	},
@@ -60,7 +59,7 @@ var Auth = {
 		}, 100);
 		
 		Auth.vars.login_btn.innerText = '找回密码';
-
+		Auth.vars.login_btn.setAttribute('type', "button");
 		Auth.setHeight(Auth.vars.lowin_wrapper_height - Auth.vars.password_group_height);
 		var value1 = document.getElementById("userName").value;
 		// var value2 = document.getElementById("userMail").value;
@@ -105,7 +104,7 @@ var Auth = {
 		}, 1000);
 	},
 	init(option) {
-		Auth.setHeight(Auth.vars.box[0].offsetHeight + Auth.vars.lowin_footer.offsetHeight);
+		Auth.setHeight(Auth.vars.box[0].offsetHeight);
 
 		Auth.vars.password_group.style.height = Auth.vars.password_group.offsetHeight + 'px';
 		Auth.vars.password_group_height = Auth.vars.password_group.offsetHeight;

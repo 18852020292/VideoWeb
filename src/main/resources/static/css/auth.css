@@ -195,13 +195,6 @@ body {
 	color: var(--color-semidark);
 }
 
-.lowin .lowin-footer {
-	text-align: center;
-	margin: 30px 0;
-	font-size: 12px;
-	color: var(--color-semidark);
-	font-weight: 700;
-}
 
 .lowin .login-back-link {
 	-webkit-transition: all 1s;

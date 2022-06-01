@@ -151,7 +151,7 @@
 								success: function (data) {
 									status = data;
 									let loginForm = document.forms["loginForm"];
-									console.log(loginForm.action.toString());
+
 
 									if (status === "not found user") {
 										alert("未查询到此用户！");
@@ -159,7 +159,9 @@
 									if (status === "The account and password do not match") {
 										alert("密码错误！");
 									} else {
-										$("#loginForm").submit();
+
+										loginForm.submit();
+
 									}
 								},
 								error: function (data) {
